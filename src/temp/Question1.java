@@ -10,6 +10,10 @@ import org.junit.jupiter.api.Test;
 public class Question1 extends BaseRandomTest {
     static String patternRegex = "A: ([0-9]+) B: ([0-9]+\\.[0-9]+) C: ([0-9]+)";
 
+    public Question1() {
+        patternRegex = "Something";
+    }
+
     @BeforeAll
     public static void initialize() {
         initializeRandomIntegers(1, 3);

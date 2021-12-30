@@ -1,6 +1,7 @@
 package global;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.io.ByteArrayInputStream;
@@ -13,9 +14,10 @@ import java.util.regex.Pattern;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class BaseTest {
+public class BaseTest implements Base {
     private final InputStream systemIn = System.in;
     private final PrintStream systemOut = System.out;
+    private Class<?> TestClass;
 
     private ByteArrayOutputStream testOut;
 
