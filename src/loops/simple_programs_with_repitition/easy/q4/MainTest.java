@@ -45,5 +45,4 @@ public class MainTest extends BaseTest {
         runWithInput(input + "");
         assertEquals(Integer.parseInt(getItemByName("numberOutput")), output, "Incorrect reversed value.");
     }
-
 }
