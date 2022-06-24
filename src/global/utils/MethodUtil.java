@@ -1,5 +1,6 @@
 package global.utils;
 
+import global.annotations.method_test.MethodTestProcessor;
 import global.tools.TestOption;
 
 import java.io.ByteArrayOutputStream;
@@ -15,6 +16,7 @@ public class MethodUtil {
 
     public static Object invokeIfMethodExists(Class<?> methodClass, String methodName, Object[] arguments, Class<?>... methodArgumentTypes) {
         setUpMethodOutput();
+        MethodTestProcessor m = new MethodTestProcessor();
         try {
             Method testMethodInvoke = methodClass.getMethod(methodName, methodArgumentTypes);
             return testMethodInvoke.invoke(null, arguments);
@@ -29,6 +31,7 @@ public class MethodUtil {
 
     public static Object invokeIfMethodExists(Class<?> methodClass, String methodName) {
         setUpMethodOutput();
+
         try {
             Method testMethodInvoke = methodClass.getMethod(methodName);
             return testMethodInvoke.invoke(null);

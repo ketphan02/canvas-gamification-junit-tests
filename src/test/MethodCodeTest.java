@@ -1,6 +1,7 @@
 package test;
 
 import global.BaseTest;
+import global.annotations.method_test.MethodTest;
 import global.exceptions.InvalidClauseException;
 import global.tools.TestOption;
 import global.utils.MethodUtil;
@@ -70,7 +71,13 @@ public class MethodCodeTest extends BaseTest {
     }
 
     @Test
-    void testIfTestOptionResets(){
-        MethodUtil.invokeIfMethodExists(MethodCode.class, "ThisMethod");
+    @MethodTest("input")
+    void methodTestAnnotationTesting(){
+        System.out.println("Hello");
     }
+
+//    @Test
+//    void testIfTestOptionResets(){
+//        MethodUtil.invokeIfMethodExists(MethodCode.class, "ThisMethod");
+//    }
 }
