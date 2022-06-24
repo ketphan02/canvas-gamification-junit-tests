@@ -73,7 +73,7 @@ public class MethodCodeTest extends BaseTest {
     @Test
     @MethodTest("input")
     void methodTestAnnotationTesting(){
-        System.out.println("Hello");
+        provideInput("hello");
     }
 
 //    @Test
