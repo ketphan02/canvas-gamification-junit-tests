@@ -1,6 +1,5 @@
 package global.utils;
 
-
 import global.tools.TestOption;
 
 import java.io.ByteArrayOutputStream;
@@ -29,21 +28,10 @@ public class MethodUtil {
     }
 
     public static Object invokeIfMethodExists(Class<?> methodClass, String methodName) {
-        setUpMethodOutput();
-
-        try {
-            Method testMethodInvoke = methodClass.getMethod(methodName);
-            return testMethodInvoke.invoke(null);
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-            fail(Objects.requireNonNullElseGet(
-                    TestOption.invalidMethodMessage,
-                    () -> String.join("", methodClass.getSimpleName(), " does not contain method ", methodName, "."))
-            );
-            return null;
-        }
+        return invokeIfMethodExists(methodClass, methodName, null, null);
     }
 
-    public static void setUpMethodOutput() {
+    private static void setUpMethodOutput() {
         methodOutput = new ByteArrayOutputStream();
         System.setOut(new PrintStream(methodOutput));
     }
