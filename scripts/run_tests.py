@@ -8,7 +8,7 @@ from typing import List
 def _get_all_dirs(cur_dir: List[str], path: str, all_tests: List[str]) -> None:
     BLACK_LIST = ['src/test', 'src/temp']
     for black_list_word in BLACK_LIST:
-        if black_list_word in cur_dir[0]:
+        if path.startswith(black_list_word):
             return
 
     for dir in cur_dir:
