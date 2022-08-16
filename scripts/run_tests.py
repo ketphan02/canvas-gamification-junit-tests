@@ -6,6 +6,11 @@ from typing import List
 
 
 def _get_all_dirs(cur_dir: List[str], path: str, all_tests: List[str]) -> None:
+    BLACK_LIST = ['src/test', 'src/temp']
+    for black_list_word in BLACK_LIST:
+        if black_list_word in cur_dir[0]:
+            return
+
     for dir in cur_dir:
         files = []
         is_test = False
@@ -43,9 +48,11 @@ def main() -> None:
         dirs = os.path.join('src', '/'.join(test.split('.')))
         # get all files in that directory
         print(dirs)
-        subprocess.call(['javac', '-d', os.path.join(os.getcwd(), 'bin'), '-cp', 'lib/*', '-sourcepath', os.path.join(os.getcwd(), 'src'), os.path.join(dirs, 'MainTest.java')])
+        subprocess.call(['javac', '-d', os.path.join(os.getcwd(), 'bin'), '-cp', 'lib/*',
+                        '-sourcepath', os.path.join(os.getcwd(), 'src'), os.path.join(dirs, 'MainTest.java')])
         # run the test
-        subprocess.call(['java', '-jar', 'lib/junit-platform-console-standalone-1.9.0.jar', '--class-path', 'bin', '-c', test + '.MainTest', '--reports-dir', os.path.join('reports', dirs[4:])])
+        subprocess.call(['java', '-jar', 'lib/junit-platform-console-standalone-1.9.0.jar', '--class-path',
+                        'bin', '-c', test + '.MainTest', '--reports-dir', os.path.join('reports', dirs[4:])])
 
 
 if __name__ == '__main__':
