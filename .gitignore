@@ -4,3 +4,4 @@
 /out/production
 *.class
 .DS_Store
+reports/
