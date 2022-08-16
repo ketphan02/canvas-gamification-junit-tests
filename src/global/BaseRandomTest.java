@@ -26,7 +26,6 @@ public abstract class BaseRandomTest extends BaseTest {
     @Test
     @Order(1)
     public void randomNumbersAreCorrectlyGenerated() throws InvalidClauseException, InvalidTestOptionException, InterruptedException {
-        Thread.sleep(1000);
         for (int repetitionCount = 1; repetitionCount <= NUM_RUNS; repetitionCount++) {
             setUp();
             String output = getOutput();
